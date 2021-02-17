@@ -1,6 +1,5 @@
 class SessionHelper:
 
-# PYTHONUNBUFFERED=1 в Edit Conf
 
     def __init__(self, app):
         self.app = app
@@ -21,15 +20,13 @@ class SessionHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("administrator").click()
         wd.find_element_by_link_text(" Выход").click()
-        wd.find_element_by_xpath("//input[@value='Войти']")
+ #       wd.find_element_by_xpath("//input[@value='Войти']")
 
     def ensure_logout(self):
-        wd = self.app.wd
         if self.is_logged_in():
             self.logout()
 
     def ensure_login(self, username, password):
-        wd = self.app.wd
         if self.is_logged_in():
             if self.is_logged_in_as(username):
                 return
