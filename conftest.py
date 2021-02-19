@@ -4,8 +4,10 @@ import os.path
 from fixture.application import Application
 
 
+
 fixture = None
 target = None
+
 
 
 def load_config(file):
@@ -17,13 +19,19 @@ def load_config(file):
     return target
 
 
+@pytest.fixture(scope="session")
+def config(request):
+    return load_config(request.config.getoption("--target"))
+
+
 @pytest.fixture
-def app(request):
+def app(request, config):
     global fixture
     browser = request.config.getoption("--browser")
-    web_config = load_config(request.config.getoption("--target"))["web"]
     if fixture is None or not fixture.is_valid():
-        fixture = Application(browser=browser, base_url=web_config['baseUrl'])
+        fixture = Application(browser=browser, base_url=config["web"]["baseUrl"])
+    user_info = config["webadmin"]
+    fixture.session.ensure_login(username=user_info["username"], password=user_info["password"])
     return fixture
 
 
@@ -34,7 +42,6 @@ def stop(request):
         fixture.destroy()
     request.addfinalizer(fin)
     return fixture
-
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")

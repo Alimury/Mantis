@@ -19,3 +19,7 @@ class Project:
             return int(self.id)
         else:
             return maxsize
+
+    def sortname(self):
+        if self.name:
+            return self.name
