@@ -16,11 +16,24 @@ class SessionHelper:
         wd.find_element_by_name("password").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Войти']").click()
 
+    # def logout(self):
+    #     wd = self.app.wd
+    #     wd.find_element_by_css_selector("span[class='user-info']").click()
+    #     try:
+    #         wd.find_element_by_css_selector("li[class='grey']")
+    #         wd.find_element_by_css_selector("span[class='user-info']").click()
+    #     except:
+    #         pass
+    #     wd.find_element_by_xpath("//a[contains(@href, '/mantisbt-2.24.4/logout_page.php')]").click()
+    #     wd.find_element_by_name("username")
+
+
+
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_link_text("administrator").click()
         wd.find_element_by_link_text(" Выход").click()
- #       wd.find_element_by_xpath("//input[@value='Войти']")
+
 
     def ensure_logout(self):
         if self.is_logged_in():
