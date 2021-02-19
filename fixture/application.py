@@ -4,6 +4,7 @@ from fixture.project import ProjectHelper
 from fixture.soap import SoapHelper
 
 
+
 class Application:
     def __init__(self, browser, base_url):
         if browser == "firefox":

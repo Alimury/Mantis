@@ -2,6 +2,7 @@ from model.project import Project
 import random
 
 
+
 def test_delete_project(app):
     app.session.login("administrator", "root")
     if len(app.project.get_projects_list()) == 0:

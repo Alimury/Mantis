@@ -16,7 +16,6 @@ class SoapHelper:
         except WebFault:
             return False
 
-
     def get_projects_list(self, username, password):
         client = Client(self.app.base_url + "/api/soap/mantisconnect.php?wsdl")
         name_projects = []
