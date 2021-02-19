@@ -1,0 +1,82 @@
+Testing started at 22:30 ...
+C:\Users\Admin\PycharmProjects\Mantis\env\Scripts\python.exe "C:\Program Files\JetBrains\PyCharm Community Edition 2019.2\helpers\pycharm\_jb_pytest_runner.py" --path C:/Users/Admin/PycharmProjects/Mantis/test/test_add_project.py
+Launching pytest with arguments C:/Users/Admin/PycharmProjects/Mantis/test/test_add_project.py in C:\Users\Admin\PycharmProjects\Mantis\test
+
+============================= test session starts =============================
+platform win32 -- Python 3.6.4, pytest-6.2.2, py-1.10.0, pluggy-0.13.1 -- C:\Users\Admin\PycharmProjects\Mantis\env\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Admin\PycharmProjects\Mantis\test
+collecting ... collected 1 item
+
+test_add_project.py::test_add_project FAILED                             [100%]
+test_add_project.py:5 (test_add_project)
+[None:test_10blg:test_2222SUj ,
+ None:test_1cs4v Kmo:test_2222xcWV,
+ None:test_1DV:test_2222,
+ None:test_1ey3nmlswB:test_2222 o E6tefr,
+ None:test_1fEGDIPpEu:test_2222tDwljhv,
+ None:test_1I  s 6cf:test_2222h dlX3JD9,
+ None:test_1jtwKHwk:test_2222,
+ None:test_1ntt:test_2222zNi,
+ None:test_1q3greijc:test_2222sq0   ,
+ None:test_1umo w:test_2222 sOjrX,
+ None:test_1uQ0tdwkLq:test_2222zw] != [None:test_10blg:test_2222SUj ,
+ None:test_1cs4v Kmo:test_2222xcWV,
+ None:test_1ey3nmlswB:test_2222 o E6tefr,
+ None:test_1fEGDIPpEu:test_2222tDwljhv,
+ None:test_1I  s 6cf:test_2222h dlX3JD9,
+ None:test_1jtwKHwk:test_2222,
+ None:test_1ntt:test_2222zNi,
+ None:test_1q3greijc:test_2222sq0   ,
+ None:test_1umo w:test_2222 sOjrX,
+ None:test_1uQ0tdwkLq:test_2222zw,
+ None:test_1DV:test_2222]
+
+<Click to see difference>
+
+app = <fixture.application.Application object at 0x0000012B8153B198>
+
+    def test_add_project(app):
+        app.session.login("administrator", "root")
+        project = Project(name=random_string("test_1", 10), description=random_string("test_2222", 10))
+        old_projects = app.soap.get_projects_list("administrator", "root")
+        app.project.create(project)
+        new_projects = app.soap.get_projects_list("administrator", "root")
+    #    assert len(old_projects) + 1 == len(new_projects)
+        old_projects.append(project)
+>       assert sorted(new_projects, key=Project.id_or_max) == sorted(old_projects, key=Project.id_or_max)
+E       assert [None:test_10blg:test_2222SUj ,\n None:test_1cs4v Kmo:test_2222xcWV,\n None:test_1DV:test_2222,\n None:test_1ey3nmlswB:test_2222 o E6tefr,\n None:test_1fEGDIPpEu:test_2222tDwljhv,\n None:test_1I  s 6cf:test_2222h dlX3JD9,\n None:test_1jtwKHwk:test_2222,\n None:test_1ntt:test_2222zNi,\n None:test_1q3greijc:test_2222sq0   ,\n None:test_1umo w:test_2222 sOjrX,\n None:test_1uQ0tdwkLq:test_2222zw] == [None:test_10blg:test_2222SUj ,\n None:test_1cs4v Kmo:test_2222xcWV,\n None:test_1ey3nmlswB:test_2222 o E6tefr,\n None:test_1fEGDIPpEu:test_2222tDwljhv,\n None:test_1I  s 6cf:test_2222h dlX3JD9,\n None:test_1jtwKHwk:test_2222,\n None:test_1ntt:test_2222zNi,\n None:test_1q3greijc:test_2222sq0   ,\n None:test_1umo w:test_2222 sOjrX,\n None:test_1uQ0tdwkLq:test_2222zw,\n None:test_1DV:test_2222]
+
+test_add_project.py:14: AssertionError
+
+
+================================== FAILURES ===================================
+______________________________ test_add_project _______________________________
+
+app = <fixture.application.Application object at 0x0000012B8153B198>
+
+    def test_add_project(app):
+        app.session.login("administrator", "root")
+        project = Project(name=random_string("test_1", 10), description=random_string("test_2222", 10))
+        old_projects = app.soap.get_projects_list("administrator", "root")
+        app.project.create(project)
+        new_projects = app.soap.get_projects_list("administrator", "root")
+    #    assert len(old_projects) + 1 == len(new_projects)
+        old_projects.append(project)
+>       assert sorted(new_projects, key=Project.id_or_max) == sorted(old_projects, key=Project.id_or_max)
+E       assert [None:test_10blg:test_2222SUj ,\n None:test_1cs4v Kmo:test_2222xcWV,\n None:test_1DV:test_2222,\n None:test_1ey3nmlswB:test_2222 o E6tefr,\n None:test_1fEGDIPpEu:test_2222tDwljhv,\n None:test_1I  s 6cf:test_2222h dlX3JD9,\n None:test_1jtwKHwk:test_2222,\n None:test_1ntt:test_2222zNi,\n None:test_1q3greijc:test_2222sq0   ,\n None:test_1umo w:test_2222 sOjrX,\n None:test_1uQ0tdwkLq:test_2222zw] == [None:test_10blg:test_2222SUj ,\n None:test_1cs4v Kmo:test_2222xcWV,\n None:test_1ey3nmlswB:test_2222 o E6tefr,\n None:test_1fEGDIPpEu:test_2222tDwljhv,\n None:test_1I  s 6cf:test_2222h dlX3JD9,\n None:test_1jtwKHwk:test_2222,\n None:test_1ntt:test_2222zNi,\n None:test_1q3greijc:test_2222sq0   ,\n None:test_1umo w:test_2222 sOjrX,\n None:test_1uQ0tdwkLq:test_2222zw,\n None:test_1DV:test_2222]
+
+test_add_project.py:14: AssertionError
+=========================== short test summary info ===========================
+FAILED test_add_project.py::test_add_project - assert [None:test_10blg:test_2...
+============================= 1 failed in 26.73s ==============================
+
+Process finished with exit code 0
+
+Assertion failed
+
+Assertion failed
+
+Assertion failed
+
+Assertion failed
